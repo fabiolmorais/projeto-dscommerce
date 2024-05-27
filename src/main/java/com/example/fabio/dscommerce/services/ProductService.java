@@ -3,6 +3,7 @@ package com.example.fabio.dscommerce.services;
 import com.example.fabio.dscommerce.dto.ProductDTO;
 import com.example.fabio.dscommerce.entities.Product;
 import com.example.fabio.dscommerce.repositories.ProductRepository;
+import com.example.fabio.dscommerce.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +22,7 @@ public class ProductService {
     @Transactional(readOnly = true)
     public ProductDTO findById(Long id) {
         Optional<Product> result = repository.findById(id);
-        Product product = result.get();
+        Product product = result.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
         ProductDTO dto = new ProductDTO(product);
         return dto;
     }
