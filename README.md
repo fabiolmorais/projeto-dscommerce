@@ -36,5 +36,4 @@ O sistema consiste nos seguintes casos de uso:
 - Registrar pagamento (somente admin)
 - Reportar pedidos (somente admin)
 
-(Obs: Até o momento só foi criado o modelo de dominio e ORM)
 
